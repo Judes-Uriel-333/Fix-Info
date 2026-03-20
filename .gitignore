@@ -1,0 +1,30 @@
+﻿## Ignore Visual Studio / Rider build outputs
+bin/
+obj/
+TestResults/
+*.pdb
+*.exe
+*.dll
+
+## IDE Settings
+.idea/
+.vs/
+*.user
+*.userprefs
+*.suo
+*.sln.DotSettings.user
+
+## NuGet Packages
+packages/
+*.nupkg
+
+## MSBuild
+*.suo
+*.ntvs*
+*.njsproj
+*.sln.docstates
+
+## OS files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
