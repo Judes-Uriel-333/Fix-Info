@@ -6,7 +6,7 @@ namespace WindowsFormsAppFixInfo
 {
     public partial class FormCHMDP : Form
     {
-        private string cn ="Server=MSI\\SQLEXPRESS;Database=Fixinfo;Trusted_Connection=True;";
+        private string cn ="Server=.\\SQLEXPRESS;Database=Fixinfo;Trusted_Connection=True;Connect Timeout=5;";
         public FormCHMDP()
         {
             InitializeComponent();

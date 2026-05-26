@@ -16,7 +16,7 @@ namespace WindowsFormsAppFixInfo
     {
         // chaine de connexion !!!!
         // on spécifie le nom du serveur, le nom de la base et les infos de connexion
-        private string cn = "Server=MSI\\SQLEXPRESS;Database=Fixinfo;Trusted_Connection=True;";
+        private string cn = "Server=.\\SQLEXPRESS;Database=Fixinfo;Trusted_Connection=True;Connect Timeout=5;";
 
         public Form1()
         {

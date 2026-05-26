@@ -1,25 +1,142 @@
-# FixInfo - Gestion de Maintenance Informatique
+# FixInfo - Gestion de maintenance informatique
 
-## Présentation
-**FixInfo** est une application de bureau (Windows Forms) conçue pour centraliser et suivre le parc matériel informatique ainsi que les interventions de maintenance effectuées sur chaque équipement.
+FixInfo est une application Windows Forms en C# qui permet de gérer le suivi d'un parc matériel informatique et les interventions de maintenance associées.
 
-## Prérequis
-- **IDE :** Rider ou Visual Studio.
-- **Framework :** .NET Framework 4.8.
-- **Base de données :** SQL Server.
+Ce projet correspond à une situation professionnelle BTS SIO SLAM.
 
-## Installation et Configuration
-1. **Base de données :** 
-   - Localisez le fichier `FixInfo.sql` à la racine du projet.
-   - Exécutez ce script sur votre instance SQL Server pour créer la base de données `Fixinfo` et ses tables.
-2. **Chaîne de connexion :** 
-   - Ouvrez le projet dans votre IDE.
-   - Modifiez la variable `cn` dans `Form1.cs` (et `FormCHMDP.cs` si nécessaire) pour correspondre à votre serveur SQL (par défaut : `Server=MSI\SQLEXPRESS`).
-3. **Exécution :**
-   - Compilez et lancez la solution `WindowsFormsAppFixInfo.sln`.
-   - Utilisez les identifiants suivants pour vous connecter :
-     - **Login :** `root`
-     - **Mot de passe :** `root2`
+## Technologies utilisées
+
+- C#
+- Windows Forms
+- .NET Framework 4.8
+- SQL Server Express
+- SQL Server Management Studio
+- Visual Studio 2022
+
+## Fonctionnalités principales
+
+- Authentification par identifiant et mot de passe
+- Modification du mot de passe utilisateur
+- Ajout de matériel informatique
+- Enregistrement d'interventions sur un matériel
+- Stockage des données dans une base SQL Server
+
+## Structure du projet
+
+```text
+WindowsFormsAppFixInfoLrd/
+|-- docs/
+|   `-- modelisation.md
+|-- WindowsFormsAppFixInfo/
+|   |-- Form1.cs
+|   |-- FormLogin.cs
+|   |-- FormCHMDP.cs
+|   |-- App.config
+|   |-- FixInfo.sql
+|   `-- WindowsFormsAppFixInfo.csproj
+|-- CAHIER_DES_CHARGES.md
+|-- FixInfo.sql
+|-- README.md
+`-- WindowsFormsAppFixInfo.sln
+```
 
 ## Documentation
-Pour plus de détails sur les fonctionnalités et les spécifications techniques, veuillez consulter le [Cahier des Charges](CAHIER_DES_CHARGES.md).
+
+- [Cahier des charges](CAHIER_DES_CHARGES.md)
+- [MCD, MLD et MPD](docs/modelisation.md)
+- [Script SQL](FixInfo.sql)
+
+## Documentation d'installation
+
+### 1. Prérequis
+
+Installer les outils suivants :
+
+- Visual Studio 2022
+- SQL Server Express
+- SQL Server Management Studio
+- .NET Framework 4.8
+
+### 2. Installer la base de données
+
+Ouvrir SQL Server Management Studio, puis exécuter le script SQL situé à la racine :
+
+```text
+FixInfo.sql
+```
+
+Ce script crée la base `Fixinfo`, les tables nécessaires et les données de test.
+
+### 3. Vérifier la chaîne de connexion
+
+Dans le code de l'application, la chaîne de connexion utilisée est :
+
+```text
+Server=MSI\SQLEXPRESS;Database=Fixinfo;Trusted_Connection=True;
+```
+
+Si le nom de votre serveur SQL Server est différent, il faut adapter cette valeur dans les fichiers concernés.
+
+### 4. Lancer l'application
+
+Ouvrir la solution :
+
+```text
+WindowsFormsAppFixInfo.sln
+```
+
+Puis lancer le projet depuis Visual Studio.
+
+Compte de test :
+
+```text
+Login : root
+Mot de passe : root2
+```
+
+## Documentation utilisateur
+
+### Se connecter
+
+Au lancement de l'application, une fenêtre de connexion apparaît.
+L'utilisateur saisit son identifiant et son mot de passe.
+
+### Ajouter un matériel
+
+Dans la fenêtre principale, l'utilisateur renseigne :
+
+- le nom du matériel
+- le prix
+- la description
+- la date d'installation
+- le MTBF
+
+Après validation, le matériel est ajouté dans la base.
+
+### Ajouter une intervention
+
+L'utilisateur sélectionne un matériel, puis renseigne :
+
+- la date de l'intervention
+- le prix de l'intervention
+- un commentaire
+
+Après validation, l'intervention est enregistrée et liée au matériel choisi.
+
+### Modifier le mot de passe
+
+Depuis la fenêtre de connexion, l'utilisateur peut accéder à la fenêtre de changement de mot de passe.
+
+## Base de données
+
+La base `Fixinfo` contient trois tables principales :
+
+- `Login` : comptes utilisateurs
+- `Materiel` : matériel informatique
+- `Inter` : interventions de maintenance
+
+La table `Inter` possède une clé étrangère vers `Materiel`.
+
+## Remarque
+
+Le projet reste volontairement simple afin de correspondre à un niveau BTS SIO SLAM.
